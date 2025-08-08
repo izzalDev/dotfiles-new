@@ -1,5 +1,6 @@
-Remove-Item Alias:clear
-Remove-Item Alias:ls
+Get-Alias |
+  Where-Object { "$($_.Options) $($_.Name)" -notmatch 'ReadOnly|Constant|cd' } |
+  ForEach-Object { Remove-Item "Alias:$($_.Name)" }
 
 function clear {
   "`n" * $Host.UI.RawUI.WindowSize.Height | Out-Host
@@ -16,6 +17,18 @@ function astronvim {
   Remove-Item Env:NVIM_APPNAME
 }
 
+function nvchad {
+  $env:NVIM_APPNAME = "nvchad"
+  nvim @args
+  Remove-Item Env:NVIM_APPNAME
+}
+
+function lazyvim {
+  $env:NVIM_APPNAME = "lazyvim"
+  nvim @args
+  Remove-Item Env:NVIM_APPNAME
+}
+
 function y {
   $tmp = (New-TemporaryFile).FullName
   yazi $args --cwd-file="$tmp"
@@ -26,5 +39,4 @@ function y {
   Remove-Item -Path $tmp
 }
 
-& "C:\Users\Rizal Fadlullah\scoop\apps\docker-machine\current\docker-machine.exe" env default --shell powershell | Invoke-Expression
 Invoke-Expression (&starship init powershell)
