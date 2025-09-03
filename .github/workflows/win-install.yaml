@@ -12,9 +12,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Directory
-        run: mkdir dist
-
       - name: Setup Cache
         id: cache
         uses: actions/cache@v4
@@ -30,7 +27,7 @@ jobs:
       - name: Build Atuin Powershell PR
         run: |
           cargo install --git https://github.com/ltrzesniewski/atuin.git --branch powershell-pr
-          mv ~/.cargo/bin/atuin.exe ./dist
+          7z a dist/atuin.zip ~/.carogo/bin/atuin.exe
 
       - name: Generate installation script  
         shell: bash
