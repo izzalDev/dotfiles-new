@@ -2,7 +2,6 @@ $IsAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIde
 $adminCommands = @'
 winget install --id Microsoft.VCRedist.2015+.x64 --accept-source-agreements --accept-package-agreements
 winget install --id Microsoft.PowerShell --accept-source-agreements --accept-package-agreements
-winget install --id Git.Git --accept-source-agreements --accept-package-agreements
 '@
 
 if (-not $IsAdmin) {
