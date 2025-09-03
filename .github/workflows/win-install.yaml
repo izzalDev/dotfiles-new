@@ -12,6 +12,15 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Setup Cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo
+            ~/.dist
+          key: ${{ runner.os }}-cache
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -21,8 +30,9 @@ jobs:
       - name: Generate installation script  
         shell: bash
         run: |
-          mkdir -p dist 
-          cat << 'EOF' > ./dist/install.ps1
+          mkdir -p ~/dist 
+          mv ~/.cargo/bin/atuin.exe ~/dist/atuin.exe
+          cat << 'EOF' > ~/dist/install.ps1
           winget install --id Git.Git
           git clone https://github.com/izzalDev/dotfiles-new "$Env:USERPROFILE\.config"
           & "$Env:USERPROFILE\.config\install.ps1"
@@ -31,7 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "dist"
+          path: "~/dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
