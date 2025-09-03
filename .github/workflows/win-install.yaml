@@ -30,8 +30,8 @@ jobs:
       - name: Build Atuin Powershell PR
         run: |
           cargo install --git https://github.com/ltrzesniewski/atuin.git --branch powershell-pr
-          mkdir -p ./dist/
-          7z a dist/atuin.zip ~/.cargo/bin/atuin.exe
+          mkdir -p ./dist
+          7z a dist/atuin.zip $Env:USERPROFILE/.cargo/bin/atuin.exe
 
       - name: Generate installation script  
         shell: bash
