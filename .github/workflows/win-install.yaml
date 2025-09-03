@@ -22,7 +22,7 @@ jobs:
             ~/.cargo/git/db/
             target/
             dist/
-          key: ${{ runner.os }}-{{ github.sha }}
+          key: ${{ runner.os }}-Cache
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
