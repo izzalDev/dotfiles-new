@@ -18,7 +18,7 @@ jobs:
       - name: Generate installation script  
         run: |
           mkdir -p dist 
-          cat << 'EOF' > install.ps1
+          cat << 'EOF' > ./dist/install.ps1
           winget install --id Git.Git
           EOF
 
