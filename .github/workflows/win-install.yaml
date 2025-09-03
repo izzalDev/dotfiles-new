@@ -13,13 +13,16 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Cache
-        id: cache
         uses: actions/cache@v4
         with:
           path: |
-            ~/.cargo
-            ./dist
-          key: ${{ runner.os }}-cache
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+            dist/
+          key: ${{ runner.os }}-{{ github.sha }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -27,7 +30,8 @@ jobs:
       - name: Build Atuin Powershell PR
         run: |
           cargo install --git https://github.com/ltrzesniewski/atuin.git --branch powershell-pr
-          7z a dist/atuin.zip ~/.carogo/bin/atuin.exe
+          mkdir -p ./dist/
+          7z a dist/atuin.zip ~/.cargo/bin/atuin.exe
 
       - name: Generate installation script  
         shell: bash
@@ -42,7 +46,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "./dist"
+          path: "dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
