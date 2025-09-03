@@ -5,6 +5,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions: 
+      id-token: write
+      pages: write
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
