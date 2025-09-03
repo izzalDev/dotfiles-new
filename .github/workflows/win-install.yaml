@@ -19,6 +19,7 @@ jobs:
         run: cargo install --git https://github.com/ltrzesniewski/atuin.git --branch powershell-pr
 
       - name: Generate installation script  
+        shell: bash
         run: |
           mkdir -p dist 
           cat << 'EOF' > ./dist/install.ps1
