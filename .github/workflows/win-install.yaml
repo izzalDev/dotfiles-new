@@ -20,8 +20,8 @@ jobs:
           mkdir -p dist 
           cat << 'EOF' > ./dist/install.ps1
           winget install --id Git.Git
-          git clone https://github.com/izzalDev/dotfiles-new "$Env.USERPROFILE\.config"
-          & "$Env.USERPROFILE\.config\install.ps1"
+          git clone https://github.com/izzalDev/dotfiles-new "$Env:USERPROFILE\.config"
+          & "$Env:USERPROFILE\.config\install.ps1"
           EOF
 
       - name: Upload artifact
