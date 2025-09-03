@@ -18,7 +18,7 @@ jobs:
         with:
           path: |
             ~/.cargo
-            ~/.dist
+            ~/dist
           key: ${{ runner.os }}-cache
 
       - name: Setup Pages
@@ -31,7 +31,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p ~/dist 
-          mv ~/.cargo/bin/atuin.exe ~/dist/atuin.exe
+          mv ~/.cargo/bin/atuin ~/dist/atuin.exe
           cat << 'EOF' > ~/dist/install.ps1
           winget install --id Git.Git
           git clone https://github.com/izzalDev/dotfiles-new "$Env:USERPROFILE\.config"
