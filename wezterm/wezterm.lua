@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local act = wezterm.action
 
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
@@ -30,4 +31,7 @@ return {
 		vertical = "Center",
 	},
 	mux_enable_ssh_agent = false,
+	cursor_blink_rate = 400,
+	default_cursor_style = "BlinkingBlock",
 }
+

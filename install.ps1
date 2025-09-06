@@ -34,6 +34,7 @@ scoop install tre-command
 scoop install busybox
 scoop install komorebi
 scoop install yazi
+scoop install whkd
 
 git clone https://github.com/izzaldev/nvim $env:LOCALAPPDATA\nvim
 
@@ -60,7 +61,12 @@ function clear {
 starship init powershell | Invoke-Expression
 '@
 
-[System.Environment]::SetEnvironmentVariable("YAZI_FILE_ONE", "C:\Program Files\Git\usr\bin\file.EXE", 'User')
+[System.Environment]::SetEnvironmentVariable("YAZI_FILE_ONE", "C:\Program Files\Git\usr\bin\file.EXE", "User")
+[System.Environment]::SetEnvironmentVariable("KOMOREBI_CONFIG_HOME", "$Env:USERPROFILE\.config\komorebi", "User")
+[System.Environment]::SetEnvironmentVariable("WHKD_CONFIG_HOME", "$Env:USERPROFILE\.config\whkd", "User")
+
+komorebic enable-autostart --whkd
+komorebic start --whkd
 
 New-Item -Path "$env:USERPROFILE\Documents\PowerShell" -ItemType Directory -Force
 New-Item -Path "$env:USERPROFILE\Documents\PowerShell\profile.ps1" -ItemType File -Force
