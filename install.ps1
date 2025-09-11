@@ -35,6 +35,9 @@ scoop install busybox
 scoop install komorebi
 scoop install yazi
 scoop install whkd
+scoop install jq
+scoop install bat
+scoop install less
 
 git clone https://github.com/izzaldev/nvim $env:LOCALAPPDATA\nvim
 
