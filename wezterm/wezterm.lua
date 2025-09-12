@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+-- Fungsi untuk memilih tema
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Catppuccin Mocha"
@@ -10,6 +11,13 @@ local function scheme_for_appearance(appearance)
 end
 
 local appearance = wezterm.gui.get_appearance()
+local is_windows = wezterm.target_triple:find("windows") ~= nil
+local has_pwsh = wezterm.resolve_binary("pwsh") ~= nil
+
+local default_prog = nil
+if is_windows and has_pwsh then
+	default_prog = { "pwsh", "-NoLogo" }
+end
 
 return {
 	color_scheme = scheme_for_appearance(appearance),
@@ -20,7 +28,7 @@ return {
 		bottom = 5,
 	},
 	hide_tab_bar_if_only_one_tab = true,
-	default_prog = { "pwsh", "-NoLogo" },
+	default_prog = default_prog,
 	font = wezterm.font("JetBrainsMono Nerd Font"),
 	font_size = 10,
 	window_decorations = "RESIZE",
@@ -34,4 +42,3 @@ return {
 	cursor_blink_rate = 400,
 	default_cursor_style = "BlinkingBlock",
 }
-
