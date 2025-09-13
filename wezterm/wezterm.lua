@@ -1,7 +1,5 @@
 local wezterm = require("wezterm")
-local act = wezterm.action
 
--- Fungsi untuk memilih tema
 local function scheme_for_appearance(appearance)
 	if appearance:find("Dark") then
 		return "Catppuccin Mocha"
@@ -12,10 +10,9 @@ end
 
 local appearance = wezterm.gui.get_appearance()
 local is_windows = wezterm.target_triple:find("windows") ~= nil
-local has_pwsh = wezterm.resolve_binary("pwsh") ~= nil
 
 local default_prog = nil
-if is_windows and has_pwsh then
+if is_windows then
 	default_prog = { "pwsh", "-NoLogo" }
 end
 
