@@ -29,7 +29,6 @@ return {
 	font = wezterm.font("JetBrainsMono Nerd Font"),
 	window_decorations = "RESIZE",
 	use_resize_increments = true,
-	adjust_window_size_when_changing_font_size = false,
 	window_content_alignment = {
 		horizontal = "Center",
 		vertical = "Center",
