@@ -36,4 +36,6 @@ return {
 	mux_enable_ssh_agent = false,
 	cursor_blink_rate = 400,
 	default_cursor_style = "BlinkingBlock",
+	initial_cols = 99,
+	initial_rows = 34,
 }
