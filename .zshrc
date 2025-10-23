@@ -8,6 +8,6 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
+export ANDROID_HOME="/opt/homebrew/share/android-commandlinetools"
 eval "$(pyenv init - zsh)"
 eval "$(starship init zsh)"
