@@ -19,15 +19,15 @@ end
 return {
 	color_scheme = scheme_for_appearance(appearance),
 	window_padding = {
-		left = 0,
-		right = 0,
-		top = 0,
+		left = 5,
+		right = 5,
+		top = 40,
 		bottom = 5,
 	},
 	hide_tab_bar_if_only_one_tab = true,
 	default_prog = default_prog,
 	font = wezterm.font("JetBrainsMono Nerd Font"),
-	window_decorations = "RESIZE",
+	window_decorations = "INTEGRATED_BUTTONS|RESIZE",
 	use_resize_increments = true,
 	window_content_alignment = {
 		horizontal = "Center",
@@ -38,4 +38,5 @@ return {
 	default_cursor_style = "BlinkingBlock",
 	initial_cols = 99,
 	initial_rows = 34,
+	window_background_opacity = 0.8,
 }
